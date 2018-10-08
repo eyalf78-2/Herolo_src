@@ -1,0 +1,42 @@
+table, th,td,tr {    
+    padding: 10px;
+    text-align: center;
+    border: none !important;
+}
+table {
+    margin: 20px auto;
+    max-width:900px;
+}
+
+.table-striped tr:nth-child(odd)  {
+    background-color: #d0efd0;
+ }
+.table-striped tr:nth-child(even)  {
+    background-color: #cdddcd;
+ }
+ .table-striped tr:hover {
+    background-color: #70d09f ;
+}
+th {
+    text-transform: uppercase;
+    background-color: #479494;
+    color:#333a42;    
+}
+.glyphicon {
+    font-size: 20px;
+    padding: 5px;
+}
+.glyphicon:hover {
+    cursor: pointer;
+}
+.glyphicon-pencil {
+    color:green;
+}
+.glyphicon-remove {
+    color:#e50f0f;
+}
+button {
+    margin-top:10px;
+    text-transform: uppercase;
+}
+

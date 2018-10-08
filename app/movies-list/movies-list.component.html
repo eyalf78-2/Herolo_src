@@ -1,0 +1,22 @@
+<table class="table-striped table-bordered table-hover">
+  <tr>
+    <th>Title</th>
+    <th>year</th>
+    <th>runtime</th>
+    <th>genre</th>
+    <th>director</th>
+    <th>actions</th>
+  </tr>
+  <tr *ngFor="let movie of this.movies">
+    <td>{{movie.title | titlecase | removeNonEnglishChar}}</td>
+    <td>{{movie.year}}</td>
+    <td>{{movie.runtime}} mins</td>
+    <td>{{movie.genre}}</td>
+    <td>{{movie.director}}</td>
+    <td>
+      <span class="removeIcon glyphicon glyphicon-pencil" (click)="this.openEditDialog(movie)"></span>
+      <span class="editIcon glyphicon glyphicon-remove" (click)="this.openRemoveDialog(movie)"></span>
+    </td>
+  </tr>
+</table>
+<button class="btn btn-primary btn-lg" (click)="this.openAddMovieDialog()">Add Movie</button>

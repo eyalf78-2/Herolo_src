@@ -1,0 +1,35 @@
+<h1 mat-dialog-title class="text-center">{{data.movieToEdit.title}}</h1>
+<form [formGroup]="editMovieForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="title"placeholder="title *" [(ngModel)]="data.movieToEdit.title" value="{{data.movieToEdit.title | titlecase | removeNonEnglishChar}}" (focus)="this.changeMovieExistsToFalse()">   
+      <mat-error *ngIf="this.titleCtrl.invalid">{{this.getRequiredErrorMessage(this.titleCtrl)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="year" placeholder="year (4 digit) *" [(ngModel)]="data.movieToEdit.year" value="{{data.movieToEdit.year}}">
+      <mat-error *ngIf="this.yearCtrl.invalid">{{this.getRequiredErrorMessage(this.yearCtrl)}}</mat-error>
+      <mat-hint>4 digit</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="runtime" placeholder="runtime *" [(ngModel)]="data.movieToEdit.runtime" value="{{data.movieToEdit.runtime}}">
+      <mat-error *ngIf="this.runtimeCtrl.invalid">{{this.getRequiredErrorMessage(this.runtimeCtrl)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="genre" placeholder="genre *" [(ngModel)]="data.movieToEdit.genre" value="{{data.movieToEdit.genre}}">
+      <mat-error *ngIf="this.genreCtrl.invalid">{{this.getRequiredErrorMessage(this.genreCtrl)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="director" placeholder="director *" [(ngModel)]="data.movieToEdit.director" value="{{data.movieToEdit.director}}">
+      <mat-error *ngIf="this.directorCtrl.invalid">{{this.getRequiredErrorMessage(this.directorCtrl)}}</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <div mat-dialog-actions>    
+    <button mat-button class="btn btn-success" [disabled]="!editMovieForm.valid"  (click)="this.onSave(data.movieToEdit)" cdkFocusInitial>Save Changes</button>
+    <button mat-button class="btn btn-danger" (click)="this.onCancel()">Cancel</button>
+  </div>
+</form>
+<div *ngIf="this.movieExists" class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" (click)="this.changeMovieExistsToFalse()" data-dismiss="alert" aria-label="close">&times;</a>
+   Movie not saved - movie with the name "{{this.titleCtrl.value}}" already exists
+</div>
+
